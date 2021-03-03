@@ -140,3 +140,4 @@ Alternatively, you can deploy using our template by clicking on the Deploy butto
 
 - [@thorsten-stripe](https://twitter.com/thorwebdev)
 - [@lfades](https://twitter.com/luis_fades)
+# handicraftshop-frontend
