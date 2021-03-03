@@ -1,0 +1,14 @@
+{
+  "title": "Iniciar Sesion | Registrarse",
+  "email":"Correo",
+  "pass":"Contraseña",
+  "confirm-pass":"Confirmar contraseña",
+  "forget-pass":"¿Has Olvidado Tu Contraseña?",
+  "variable-example": "Using a variable {{count}}",
+  "o": "O",
+  "register": "Registrate",
+  "new-client": "Cliente nuevo de Handicraft Shop",
+  "login-h2":"Identifícate",
+  "social":"Inicia Sesión con: ",
+  "preferences":"Preferencias"
+}

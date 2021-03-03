@@ -1,0 +1,14 @@
+{
+  "title": "Login / Register",
+  "email":"Email",
+  "pass":"Password",
+  "confirm-pass":"Confirm password",
+  "forget-pass":"Forgot your password?",
+  "variable-example": "Using a variable {{count}}",
+  "o": "O",
+  "register": "Register",
+  "new-client": "New to Handicraft Shop",
+  "login-h2":"Login",
+  "social":"Login With Social",
+  "preferences":"Preferences"
+}
