@@ -13,6 +13,8 @@ import { UserDropdown } from 'components/Dropdowns/user-dropdown'
 import { CurrencyDropdown } from 'components/Dropdowns/currency-dropdown'
 import { LanguageDropdown } from 'components/Dropdowns/language-dropdown'
 import { CraftsmanDropdown } from 'components/Dropdowns/craftsman-dropdown'
+import Image from 'next/image'
+
 export default function Header () {
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -72,18 +74,18 @@ export default function Header () {
       <Link href="/">
         <a className="hidden mx-auto lg:mr-10 lg:flex">
           <span className="sr-only">HandiCraft Shop</span>
-          <img
-            src="/logo.png"
-            alt='logo HandiCraft'
-            width={350}
-            height={68}
-            // unoptimized
-          />
+          <Image
+            className="object-cover"
+            src='/logo.png'
+            alt="logo HandiCraft"
+            width={780}
+            height={100}
+            />
         </a>
       </Link>
 
       <div
-        className={`w-full ml-0px mr-0px lg:mr-10 lg:ml-auto transition duration-350 ease-in-out flex justify-center ${
+        className={`w-full ml-0px mr-0px lg:mr-10 lg:ml-auto transition duration-350 ease-in-out flex justify-center visible ${
           isSticky ? 'lg:opacity-100 lg:visible' : 'lg:opacity-0 lg:visible'
         }`}
       >

@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next'
 
 const RegisterCraftsmanForm: React.FC = () => {
   const { t } = useTranslation('craftsman')
+  const submit = t('submit')
   return (
 
 <div>
@@ -25,9 +26,9 @@ const RegisterCraftsmanForm: React.FC = () => {
                     <input type="checkbox" className="opacity-0 absolute" />
                     <svg className="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
                 </div>
-                <div className="select-none">Label Text</div>
+                <div className="select-none">{t('consent')}</div>
                 </label>
-             <input type="submit"className="w-full mt-6 bg-gray-900 hover:bg-gray-600 text-white font-semibold p-3">{t('submit')} </input>
+             <input type="submit" value={submit} className="w-full mt-6 bg-gray-900 hover:bg-gray-600 text-white font-semibold p-3" />
         </form>
     </div>
   )

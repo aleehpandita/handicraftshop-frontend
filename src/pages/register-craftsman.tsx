@@ -20,7 +20,7 @@ export default function RegisterCraftsman () {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta name="Description" content={t('meta-descrip')} />
-        <title> {t('title-register-craft')}</title>
+        <title> {t('title-register')}</title>
       </Head>
       <MegaMenu />
       <CraftsmanBanner />

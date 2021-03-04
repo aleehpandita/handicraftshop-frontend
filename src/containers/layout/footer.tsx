@@ -4,8 +4,8 @@ import {
   Youtube,
   Github,
   Instagram,
-  Linkedin,
-} from 'assets/icons/social-icons';
+  Linkedin
+} from 'assets/icons/social-icons'
 
 const social = [
   {
@@ -13,49 +13,49 @@ const social = [
     link: '/',
     icon: <Facebook />,
     className: 'facebook',
-    title: 'facebook',
+    title: 'facebook'
   },
   {
     id: 1,
     link: '/',
     icon: <Twitter />,
     className: 'twitter',
-    title: 'twitter',
+    title: 'twitter'
   },
   {
     id: 2,
     link: '/',
     icon: <Youtube />,
     className: 'youtube',
-    title: 'youtube',
+    title: 'youtube'
   },
   {
     id: 3,
     link: '/',
     icon: <Github />,
     className: 'github',
-    title: 'github',
+    title: 'github'
   },
   {
     id: 4,
     link: '/',
     icon: <Instagram />,
     className: 'instagram',
-    title: 'instagram',
+    title: 'instagram'
   },
   {
     id: 5,
     link: '/',
     icon: <Linkedin />,
     className: 'linkedin',
-    title: 'linkedin',
-  },
-];
+    title: 'linkedin'
+  }
+]
 
 const Footer = () => (
-  <footer className="bg-gray-600">
+  <footer className="bg-gray-900">
 <div className="max-w-6xl m-auto k text-gray-800 flex flex-wrap justify-left  ">
-       
+
        <div className="p-5 w-8/12 sm:w-4/12 md:w-3/12">
            <div className="text-xs uppercase text-gray-400 font-medium mb-6">
                Getting Started
@@ -156,9 +156,6 @@ const Footer = () => (
            </a>
        </div>
    </div>
- 
-
-
 
 <div className="w-full flex items-center justify-center bg-white shadow-footer px-2 py-15px lg:px-35px lg:justify-between">
     <p className="text-gray-900">
@@ -187,6 +184,6 @@ const Footer = () => (
     </div>
   </div>
   </footer>
-);
+)
 
-export default Footer;
+export default Footer

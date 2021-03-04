@@ -1,36 +1,35 @@
-import React, { useContext } from 'react';
-import { DrawerContext } from 'contexts/drawer/drawer.provider';
-import ProductDetails from './views/product-details';
-import Cart from './views/cart';
-import Checkout from './views/checkout';
-import DrawerMenu from './views/menus';    
+import React, { useContext } from 'react'
+import { DrawerContext } from 'contexts/drawer/drawer.provider'
+import ProductDetails from './views/product-details'
+import Cart from './views/cart'
+import Checkout from './views/checkout-custom'
+import DrawerMenu from './views/menus'
 
 export const CartDrawer = (props) => {
-
-  const { state, dispatch } = useContext(DrawerContext);
+  const { state, dispatch } = useContext(DrawerContext)
   const handleClose = () =>
     dispatch({
       type: 'SLIDE_CART',
       payload: {
-        open: false,
-      },
-    });
+        open: false
+      }
+    })
 
   const drawerComponent = (state) => {
     if (state?.showDetails === true) {
-      return <ProductDetails />;
+      return <ProductDetails />
     }
 
     if (state?.showCart === true) {
-      return <Cart />;
+      return <Cart />
     }
 
     if (state?.showCheckout === true) {
-      return <Checkout />;
+      return <Checkout />
     }
 
-    return <Cart />;
-  };
+    return <Cart />
+  }
 
   return (
     <React.Fragment>
@@ -45,20 +44,18 @@ export const CartDrawer = (props) => {
         {drawerComponent(state)}
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
 
 export const Drawer = (props) => {
-
- 
-  const { state, dispatch }: any = useContext(DrawerContext);
+  const { state, dispatch }: any = useContext(DrawerContext)
   const handleClose = () =>
     dispatch({
       type: 'OPEN_MENU',
       payload: {
-        menu: false,
-      },
-    });
+        menu: false
+      }
+    })
 
   return (
     <React.Fragment>
@@ -74,9 +71,9 @@ export const Drawer = (props) => {
       <div
         className={`drawer drawer-menu ${state?.menu === true ? 'open' : ''}`}
       >
-        <DrawerMenu  />
-       
+        <DrawerMenu />
+
       </div>
     </React.Fragment>
-  );
-};
+  )
+}
