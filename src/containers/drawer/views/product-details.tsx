@@ -1,48 +1,48 @@
-import React, { useState, useContext } from 'react';
-import { Scrollbar } from 'components/scrollbar';
-import Button from 'components/button';
-import { CURRENCY } from 'helpers/constants';
-import { useCart } from 'contexts/cart/cart.provider';
-import { DrawerContext } from 'contexts/drawer/drawer.provider';
-import ArrowLeft from 'assets/icons/arrow-left';
-import Counter from 'components/counter';
+import React, { useState, useContext } from 'react'
+import { Scrollbar } from 'components/scrollbar'
+import Button from 'components/button'
+import { CURRENCY } from 'helpers/constants'
+import { useCart } from 'contexts/cart/cart.provider'
+import { DrawerContext } from 'contexts/drawer/drawer.provider'
+import ArrowLeft from 'assets/icons/arrow-left'
+import Counter from 'components/counter'
 
-export default function ProductDetails() {
-  const [visibility, setVisibility] = useState(false);
-  const { addItem, getItem, removeItem } = useCart();
-  const { state, dispatch } = useContext(DrawerContext);
+export default function ProductDetails () {
+  const [visibility, setVisibility] = useState(false)
+  const { addItem, getItem, removeItem } = useCart()
+  const { state, dispatch } = useContext(DrawerContext)
 
-  const count = getItem(state.item.id)?.quantity;
+  const count = getItem(state.item.id)?.quantity
 
   const toggleVisibility = () => {
-    setVisibility(!visibility);
-  };
+    setVisibility(!visibility)
+  }
 
   const hideDetails = () => {
     dispatch({
       type: 'TOGGLE_PRODUCT_DETAIL',
       payload: {
-        showDetails: false,
-      },
-    });
+        showDetails: false
+      }
+    })
 
     dispatch({
       type: 'SLIDE_CART',
       payload: {
-        open: false,
-      },
-    });
-  };
+        open: false
+      }
+    })
+  }
 
   const addToCart = () => {
-    addItem(state.item);
+    addItem(state.item)
     dispatch({
       type: 'TOGGLE_CART_VIEW',
       payload: {
-        showCart: true,
-      },
-    });
-  };
+        showCart: true
+      }
+    })
+  }
 
   return (
     <div className="flex flex-col w-full h-full">
@@ -139,7 +139,7 @@ export default function ProductDetails() {
             className="ml-auto w-full big"
             size="big"
             onIncrement={() => {
-              addItem(state.item);
+              addItem(state.item)
             }}
             onDecrement={() => removeItem(state.item)}
           />
@@ -150,5 +150,5 @@ export default function ProductDetails() {
         )}
       </div>
     </div>
-  );
+  )
 }
