@@ -3,12 +3,10 @@ import { useTranslation } from 'next-i18next'
 
 const ShoppingCart: React.FC = () => {
   return (
-      <div>
-
 <div className="flex justify-center my-6">
   <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
     <div className="flex-1">
-      <table className="w-full text-sm lg:text-base" cellspacing="0">
+      <table className="w-full text-sm lg:text-base" >
         <thead>
           <tr className="h-12 uppercase">
             <th className="hidden md:table-cell"></th>
@@ -41,7 +39,7 @@ const ShoppingCart: React.FC = () => {
             <td className="justify-center md:justify-end md:flex mt-6">
               <div className="w-20 h-10">
                 <div className="relative flex flex-row w-full h-8">
-                <input type="number" value="2" 
+                <input type="number" value="2"
                   className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
                 </div>
               </div>
@@ -56,10 +54,10 @@ const ShoppingCart: React.FC = () => {
                 20.00€
               </span>
             </td>
-          </tr> 
+          </tr>
         </tbody>
       </table>
-      <hr className="pb-6 mt-6">
+      <hr className="pb-6 mt-6" />
       <div className="my-4 mt-6 -mx-2 lg:flex">
         <div className="lg:px-2 lg:w-1/2">
           <div className="p-4 bg-gray-100 rounded-full">
@@ -151,7 +149,5 @@ const ShoppingCart: React.FC = () => {
     </div>
   </div>
 </div>
-
-      </div>
   )
 }
