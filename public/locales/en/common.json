@@ -23,5 +23,16 @@
   "home": "Home",
   "sales": "Sales",
   "supplier": "Become a Craftsman",
-  "artesan": "Already a Craftsman"
+  "artesan": "Already a Craftsman",
+  "slide": "HandiCraftShop - The real mexican crafts store online.",
+  "slide2": "100% Mexican crafts for the world ",
+  "order": "Your Order",
+  "details": "Add products to your cart, enter your details and confirm.",
+  "shop": "Shop Now",
+  "pick": "Picking your order",
+  "desc-2": "Your order is being picked and now will be forwarded for packaging",
+  "pack": "Packing Your Order",
+  "desc-pack": "We are packing your order and will be out for delivery soon",
+  "deliver": "Deliver",
+  "desc-order": " Your order has been prepared and out for delivery. It will be delivered soon."
 }

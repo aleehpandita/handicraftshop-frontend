@@ -21,5 +21,16 @@
   "home": "Hogar",
   "sales": "Rebajas",
   "supplier": "Únete como artesano",
-  "artesan": "Ya soy artesano"
+  "artesan": "Ya soy artesano",
+  "slide": "HandiCraftShop - La verdadera tienda de artesanías 100% mexicanas online.",
+  "slide2": "Artesanias 100% mexicanas para el mundo",
+  "order": "Empieza tu orden",
+  "details": "Agregue productos a su carrito, confirme o introduzca sus datos y procedemos al pago",
+  "shop": "Comprar Ahora",
+  "pick": "Ordena tu pedido",
+  "desc-2": "Tu orden ya esta confirmada, será empaquetada y enviada a su destino",
+  "pack": "Empaquetando",
+  "desc-pack": "Estamos empacando su pedido y estara listo para la entrega pronto",
+  "deliver": "Envio",
+  "desc-order": "Su pedido ha sido preparado y esta listo para la entrega. Se entregará pronto"
 }

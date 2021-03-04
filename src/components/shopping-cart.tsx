@@ -1,13 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useCart } from 'contexts/cart/cart.provider'
 import { DrawerContext } from 'contexts/drawer/drawer.provider'
 
 const ShoppingCart: React.FC = () => {
   const { dispatch } = useContext(DrawerContext)
-
   const { items, calculatePrice } = useCart()
-
+  const { t } = useTranslation('checkout')
   return (
 <div className="flex justify-center my-6">
   <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
@@ -16,7 +15,7 @@ const ShoppingCart: React.FC = () => {
         <thead>
           <tr className="h-12 uppercase">
             <th className="hidden md:table-cell"></th>
-            <th className="text-left">Product</th>
+            <th className="text-left">{t('product')}</th>
             <th className="lg:text-right text-left pl-5 lg:pl-0">
               <span className="lg:hidden" title="Quantity">Qtd</span>
               <span className="hidden lg:inline">Quantity</span>

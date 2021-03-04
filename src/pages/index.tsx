@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../containers/layout/layout'
 import PromotionBanner from 'containers/banner/promotion-banner'
+import Filters from 'components/Forms/filters'
 import HowItWorks from 'containers/how-it-works'
 import MegaMenu from '../components/mega-menu'
 import { useTranslation } from 'next-i18next'
@@ -10,8 +11,10 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getProducts } from 'helpers/get-products'
 import { useRefScroll } from 'helpers/use-ref-scroll'
 import Products from 'containers/products'
+import { getCategories } from 'helpers/get-categories'
+import Categories from 'containers/categories'
 
-export default function IndexPage ({ products }) {
+export default function IndexPage ({ products, categories }) {
   const { elRef, scroll } = useRefScroll({
     percentOfElement: 0,
     percentOfContainer: 0,
@@ -33,6 +36,7 @@ export default function IndexPage ({ products }) {
       <MegaMenu />
       <PromotionBanner />
       <HowItWorks />
+      <Categories data={categories} ref={elRef} />
       <Products items={products} ref={elRef} />
     </Layout>
   )
@@ -40,11 +44,11 @@ export default function IndexPage ({ products }) {
 
 export async function getServerSideProps ({ locale }) {
   const products = await getProducts()
-  // console.log('products', products)
-  // const products = {}
+  const categories = await getCategories()
   return {
     props: {
       products,
+      categories,
       ...await serverSideTranslations(locale, ['common'])
     }
   }

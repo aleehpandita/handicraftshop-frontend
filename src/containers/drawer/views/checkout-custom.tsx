@@ -68,15 +68,17 @@ export default function Checkout () {
     //     bill_amount: calculatePrice()
     //   })
     // })
-    const res = await SendingOrder({
-      body: JSON.stringify({
+    const body = {
+      body: {
         items: items,
         address: `${name} ${address} ${postal_code} ${suite}`,
         phone_number: phone_number,
         email: email,
         bill_amount: calculatePrice()
-      })
-    })
+      }
+    }
+    const res = await SendingOrder(body)
+
     if (res.status === 200) {
       setSuccess(true)
       clearCart()

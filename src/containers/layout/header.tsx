@@ -72,7 +72,7 @@ export default function Header () {
       </button>
 
       <Link href="/">
-        <a className="hidden mx-auto lg:mr-10 lg:flex">
+        <a href="/" className="hidden mx-auto lg:mr-10 lg:flex">
           <span className="sr-only">HandiCraft Shop</span>
           <Image
             className="object-cover"

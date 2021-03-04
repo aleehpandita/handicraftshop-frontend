@@ -159,6 +159,23 @@ export const ItemCardDetailsButton =
 export const ItemCardCounterWrapper =
   'ml-auto mt-2 w-full flex justify-end items-end'
 
+// Categories carousel
+export const ButtonGroupBase = 'flex items-center absolute top-half w-full'
+
+export const PrevButtonRadius = 'left-0 ml-35px '
+
+export const NextButtonRadius = 'right-0 mr-35px'
+
+export const ActiveDotsBase = 'w-6 bg-primary'
+
+export const CarouselItemBase =
+  'overflow-hidden w-full flex rounded overflow-hidden'
+
+export const CarouselItemImage = 'w-full h-full object-cover'
+
+export const ArrowButtonBase =
+  'w-30px h-30px flex items-center justify-center rounded-full text-gray-00 bg-white shadow-navigation absolute transition duration-250 hover:bg-gray-900 hover:text-white focus:outline-none'
+
 // ----------
 // SearchBox
 // ----------
