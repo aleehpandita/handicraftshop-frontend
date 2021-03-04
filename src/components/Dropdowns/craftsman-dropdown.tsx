@@ -27,7 +27,6 @@ export const CraftsmanDropdown: React.FC<UserProps | null> = ({
   const mycoupons = t('coupons')
   const languageActive = router.locale
   const path = router.pathname
-  console.log('path', path)
   const [show, setShow] = useState(false)
   const container = useRef(null)
   const esp = t('es')

@@ -8,7 +8,6 @@ import NotFound from 'assets/icons/not-found'
 
 const Products = React.forwardRef(
   ({ items }: any, ref: React.RefObject<HTMLDivElement>) => {
-    console.log('ref', ref)
     const { dispatch } = useContext(DrawerContext)
 
     const { searchTerm } = useSearch()

@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 export const useSearchable = (data, searchText, searchProps) => {
-  console.log('data en searchable', data)
+  // console.log('data en searchable', data)
   return useMemo(() => {
     const regex = new RegExp(searchText, 'i')
     return data.data.filter((item) =>

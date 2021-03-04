@@ -18,7 +18,7 @@ export default function Checkout () {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta name="Description" content="Put your description here." />
-        <title> {t('title')}</title>
+        <title> eded {t('title')}</title>
       </Head>
 
  </Layout>

@@ -1,87 +1,110 @@
-import { useContext, useState } from 'react';
-import NumberFormat from 'react-number-format';
-import { DrawerContext } from 'contexts/drawer/drawer.provider';
-import { Scrollbar } from 'components/scrollbar';
-import ArrowLeft from 'assets/icons/arrow-left';
-import Input from 'components/input';
-import Button from 'components/button';
-import { useCart } from 'contexts/cart/cart.provider';
-import Textarea from 'components/textarea';
-import OrderSubmit from './order-submit';
+import { useContext, useState } from 'react'
+import NumberFormat from 'react-number-format'
+import { DrawerContext } from 'contexts/drawer/drawer.provider'
+import { Scrollbar } from 'components/scrollbar'
+import ArrowLeft from 'assets/icons/arrow-left'
+import Input from 'components/input'
+import Button from 'components/button'
+import { useCart } from 'contexts/cart/cart.provider'
+import Textarea from 'components/textarea'
+import { SendingOrder } from 'helpers/send-order'
+import OrderSubmit from './order-submit'
+import { useRouter } from 'next/router'
+
 import {
   InputBase,
   TextBoxCommonBase,
-  TextBoxEnable,
-} from 'components/utils/theme';
+  TextBoxEnable
+} from 'components/utils/theme'
 const initialState = {
   phone_number: '',
   name: '',
   email: '',
   address: '',
   postal_code: '',
-  suite: '',
-};
+  suite: ''
+}
 
-export default function Checkout() {
-  const { dispatch } = useContext(DrawerContext);
-  const [formData, setFormData] = useState(initialState);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const { items, calculatePrice, clearCart } = useCart();
+export default function Checkout () {
+  const { dispatch } = useContext(DrawerContext)
+  const [formData, setFormData] = useState(initialState)
+  const [success, setSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const { items, calculatePrice, clearCart } = useCart()
+  const router = useRouter()
 
   const hideCheckout = () => {
     dispatch({
       type: 'TOGGLE_CHECKOUT_VIEW',
       payload: {
-        showCheckout: false,
-      },
-    });
-  };
+        showCheckout: false
+      }
+    })
+  }
 
   const submitOrder = async () => {
-    const { name, email, address, postal_code, suite, phone_number } = formData;
+    const { name, email, address, postal_code, suite, phone_number } = formData
     if (!phone_number.trim()) {
       setError({
         field: 'phone_number',
-        message: 'Phone number is required',
-      });
-      return;
+        message: 'Phone number is required'
+      })
+      return
     }
 
-    setLoading(true);
+    setLoading(true)
 
-    const res = await fetch('/api/order', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+    // const res = await fetch('/api/order', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     items: items,
+    //     address: `${name} ${address} ${postal_code} ${suite}`,
+    //     phone_number: phone_number,
+    //     email: email,
+    //     bill_amount: calculatePrice()
+    //   })
+    // })
+    const res = await SendingOrder({
       body: JSON.stringify({
         items: items,
         address: `${name} ${address} ${postal_code} ${suite}`,
         phone_number: phone_number,
         email: email,
-        bill_amount: calculatePrice(),
-      }),
-    });
+        bill_amount: calculatePrice()
+      })
+    })
     if (res.status === 200) {
-      setSuccess(true);
-      clearCart();
-      setLoading(false);
+      setSuccess(true)
+      clearCart()
+      setLoading(false)
+      hideCheckout()
+      router.push('/checkout')
     } else {
-      setError(true);
+      // router.push('/checkout')
+      hideCheckout()
+      setError(true)
     }
-  };
+  }
 
   const onChange = (e) => {
-    const { value, name } = e.currentTarget;
+    const { value, name } = e.currentTarget
     setFormData({
       ...formData,
-      [name]: value,
-    });
-  };
+      [name]: value
+    })
+  }
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push('/checkout')
+  }
+
   if (success) {
-    return <OrderSubmit />;
+    // en lugar de return component redireccionare
+    // return <OrderSubmit />
   }
 
   return (
@@ -112,7 +135,7 @@ export default function Checkout() {
               onValueChange={({ value }) =>
                 setFormData({
                   ...formData,
-                  phone_number: value,
+                  phone_number: value
                 })
               }
             />
@@ -175,5 +198,5 @@ export default function Checkout() {
         </Button>
       </div>
     </div>
-  );
+  )
 }
