@@ -1,15 +1,15 @@
-import React from 'react';
-import MultiCarousel from 'react-multi-carousel';
-import ChevronLeft from 'assets/icons/chevron-left';
-import ChevronRight from 'assets/icons/chevron-right';
+import React from 'react'
+import MultiCarousel from 'react-multi-carousel'
+import ChevronLeft from 'assets/icons/chevron-left'
+import ChevronRight from 'assets/icons/chevron-right'
 
 import {
   NavButtonGroupBase,
   NavArrowButtonBase,
   NavPrevButtonRadius,
   NavNextButtonRadius,
-  HeroCarouselBase,
-} from 'components/utils/theme';
+  HeroCarouselBase
+} from 'components/utils/theme'
 
 type CustomButtonProp = {
   onClick?: (e: any) => void;
@@ -39,30 +39,30 @@ const PrevButton: React.FC<CustomButtonProp> = ({ onClick, children }) => {
   return (
     <button
       onClick={(e) => {
-        e.preventDefault();
-        onClick(e);
+        e.preventDefault()
+        onClick(e)
       }}
       aria-label="prev-button"
       className={NavArrowButtonBase + ' ' + NavPrevButtonRadius}
     >
       {children}
     </button>
-  );
-};
+  )
+}
 const NextButton: React.FC<CustomButtonProp> = ({ onClick, children }) => {
   return (
     <button
       onClick={(e) => {
-        e.preventDefault();
-        onClick(e);
+        e.preventDefault()
+        onClick(e)
       }}
       aria-label="next-button"
       className={NavArrowButtonBase + ' ' + NavNextButtonRadius}
     >
       {children}
     </button>
-  );
-};
+  )
+}
 
 const ButtonGroup: React.FC<ButtonGroupProps> = ({ next, previous }) => {
   return (
@@ -74,15 +74,15 @@ const ButtonGroup: React.FC<ButtonGroupProps> = ({ next, previous }) => {
         <ChevronRight height="12px" />
       </NextButton>
     </div>
-  );
-};
+  )
+}
 
 const responsive = {
   desktop: {
     breakpoint: { max: 3600, min: 0 },
-    items: 1,
-  },
-};
+    items: 1
+  }
+}
 
 const Carousel: React.FC<CarouselProps> = ({
   data,
@@ -116,7 +116,7 @@ const Carousel: React.FC<CarouselProps> = ({
           className={HeroCarouselBase + ' ' + 'hero-carousel-item-base'}
           style={{
             backgroundImage: `url(${item.background})`,
-            backgroundColor: '#F5FAFB',
+            backgroundColor: '#F5FAFB'
           }}
           key={index}
         >
@@ -124,15 +124,15 @@ const Carousel: React.FC<CarouselProps> = ({
         </div>
       ))}
     </MultiCarousel>
-  );
-};
+  )
+}
 
 const defaultProps = {
   autoPlay: false,
   infinite: true,
-  className: '',
-};
+  className: ''
+}
 
-Carousel.defaultProps = defaultProps;
+Carousel.defaultProps = defaultProps
 
-export default Carousel;
+export default Carousel

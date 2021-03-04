@@ -12,7 +12,7 @@ import { useTranslation } from 'next-i18next'
 import { UserDropdown } from 'components/Dropdowns/user-dropdown'
 import { CurrencyDropdown } from 'components/Dropdowns/currency-dropdown'
 import { LanguageDropdown } from 'components/Dropdowns/language-dropdown'
-
+import { CraftsmanDropdown } from 'components/Dropdowns/craftsman-dropdown'
 export default function Header () {
   const router = useRouter()
   const { t } = useTranslation('common')
@@ -99,12 +99,17 @@ export default function Header () {
 
       <div className="hidden xl:block lg:block md:block items-center text-gray-900 mr-0 flex-shrink-0 lg:flex">
         <span className="font-semibold text-base ">
-           <UserDropdown />
+           <CraftsmanDropdown />
         </span>
       </div>
       <div className=" items-center text-gray-900 mr-2 mt-2 flex-shrink-0 lg:flex">
         <span className="font-semibold text-base text-14px ml-3">
            <LanguageDropdown />
+        </span>
+      </div>
+      <div className="hidden xl:block lg:block md:block items-center text-gray-900 mr-0 flex-shrink-0 lg:flex">
+        <span className="font-semibold text-base ">
+           <UserDropdown />
         </span>
       </div>
       <div className=" items-center text-gray-900 mr-2 mt-2 flex-shrink-0 lg:flex">

@@ -10,5 +10,6 @@
   "new-client": "Cliente nuevo de Handicraft Shop",
   "login-h2":"Identifícate",
   "social":"Inicia Sesión con: ",
-  "preferences":"Preferencias"
+  "preferences":"Preferencias",
+  "title-register-craft":"Registrate como artesano!"
 }

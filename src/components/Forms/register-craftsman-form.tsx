@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTranslation } from 'next-i18next'
 
-const RegisterCraftsman: React.FC = () => {
+const RegisterCraftsmanForm: React.FC = () => {
   const { t } = useTranslation('login')
   return (
 
@@ -32,4 +32,4 @@ const RegisterCraftsman: React.FC = () => {
     </div>
   )
 }
-export default RegisterCraftsman
+export default RegisterCraftsmanForm

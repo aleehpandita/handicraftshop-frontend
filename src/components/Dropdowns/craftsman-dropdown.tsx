@@ -64,7 +64,7 @@ export const CraftsmanDropdown: React.FC<UserProps | null> = ({
         className={'flex  w-full '}
         onClick={() => setShow(!show)}
       >
-              <label className="flex-auto md:px-2 xl:px-2  lg:px-2"> <UserIcon width="10px" height="10px" /></label>
+              <label className="flex-auto md:px-2 xl:px-2  lg:px-2 w-full">    { t('supplier')} </label>
 
       </button>
 
@@ -83,34 +83,19 @@ export const CraftsmanDropdown: React.FC<UserProps | null> = ({
         <div className="bg-white rounded shadow-md">
 
                <ActiveLink
-                href='/login'
+                href='/register-craftsman'
                 activeClassName="font-semibold "
               >
             <a className="block py-2 px-4 hover:bg-green-500 hover:text-green-100">
-           {register}
+           { t('supplier')}
             </a>
           </ActiveLink>
           <Link href="/">
             <a className="block px-4 py-2 hover:bg-green-500 hover:text-green-100">
-              {myorders}
-            </a>
-          </Link>
-          <Link href="/">
-            <a className="block px-4 py-2 hover:bg-green-500 hover:text-green-100">
-            {mynotifications}
-            </a>
-          </Link>
-          <Link href="/api/logout">
-            <a className="block px-4 py-2 hover:bg-green-500 hover:text-green-100">
-            {favorites}
+              { t('artesan') }
             </a>
           </Link>
 
-          <Link href="/api/logout">
-            <a className="block px-4 py-2 hover:bg-green-500 hover:text-green-100">
-            {mycoupons}
-            </a>
-          </Link>
         </div>
 
       </Transition>
