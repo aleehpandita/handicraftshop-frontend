@@ -2,32 +2,32 @@ import React from 'react'
 import { useTranslation } from 'next-i18next'
 
 const RegisterCraftsmanForm: React.FC = () => {
-  const { t } = useTranslation('login')
+  const { t } = useTranslation('craftsman')
   return (
 
 <div>
-        <form action="" className="form bg-white p-6 my-10 relative">
-                <div className="icon bg-blue-600 text-white w-6 h-6 absolute flex items-center justify-center p-5 lg:-left-20px xl:-left-20px md:-left-20px">
-                    <i className="fal fa-phone-volume fa-fw text-2xl transform -rotate-45"></i>
-                </div>
+        <form action="" className="form bg-white p-4 my-5 relative">
+        <h2 className="text-3xl font-semibold text-gray-800 md:text-4xl">{t('h2-1')} <span className="text-gray-600">{t('world')}</span></h2>
             <h3 className="text-2xl text-gray-900 font-semibold">
-                Let us call you!
+                {t('call')}
             </h3>
             <p className="text-gray-600">
-                    To help you choose your property
+                    {t('help')}
             </p>
             <div className="flex space-x-5 mt-3">
                 <input type="text" name="" id="" placeholder="Your Name" className="border p-2  w-1/2" />
                 <input type="tel" name="" id="" placeholder="Your Number" className="border p-2 w-1/2" />
             </div>
             <input type="email" name="" id="" placeholder="Your Email" className="border p-2 w-full mt-3" />
-            <textarea className="resize  rounded-md border p-2 mt-3 w-full"></textarea>
-            <p className="font-bold text-sm mt-3">GDPR Agreement *</p>
-            <div className="flex items-baseline space-x-2 mt-2">
-                <input type="checkbox" name="" id="" className="inline-block" />
-                <p className="text-gray-600 text-sm">I consent to having this website store my submitted information so they can respond to my inquiry.</p>
-            </div>
-             <input type="submit" value="Submit" className="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-semibold p-3" />
+            <textarea className="resize  rounded-md border p-2 mt-3 w-full" placeholder={t('textarea')}></textarea>
+            <label className="flex justify-start items-start">
+                    <div className="bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500">
+                    <input type="checkbox" className="opacity-0 absolute" />
+                    <svg className="fill-current hidden w-4 h-4 text-green-500 pointer-events-none" viewBox="0 0 20 20"><path d="M0 11l2-2 5 5L18 3l2 2L7 18z"/></svg>
+                </div>
+                <div className="select-none">Label Text</div>
+                </label>
+             <input type="submit"className="w-full mt-6 bg-gray-900 hover:bg-gray-600 text-white font-semibold p-3">{t('submit')} </input>
         </form>
     </div>
   )

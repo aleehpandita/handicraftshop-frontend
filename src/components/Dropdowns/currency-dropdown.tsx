@@ -54,7 +54,7 @@ export const CurrencyDropdown: React.FC<UserProps | null> = ({
   }, [show])
 
   return (
-    <div ref={container} className="w-full  md:mt-0 px-2">
+    <div ref={container} className="w-full  mt-0 px-2">
       <button
         className="flex  w-full "
         onClick={() => setShow(!show)}

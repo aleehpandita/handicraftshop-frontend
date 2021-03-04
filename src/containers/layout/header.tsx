@@ -112,13 +112,13 @@ export default function Header () {
            <UserDropdown />
         </span>
       </div>
-      <div className=" items-center text-gray-900 mr-2 mt-2 flex-shrink-0 lg:flex">
+      <div className=" items-center text-gray-900 mr-2 mt-0 flex-shrink-0 lg:flex">
         <span className="font-semibold text-base text-14px ml-3">
            <CurrencyDropdown />
         </span>
       </div>
       <button
-        className="flex items-center justify-center flex-shrink-0 h-auto relative focus:outline-none"
+        className="flex items-center justify-center flex-shrink-0 mt-5 md:mt-0 lg:mt-0 xl:mt-0  h-auto relative focus:outline-none"
         onClick={showCart}
         aria-label="cart-button"
       >

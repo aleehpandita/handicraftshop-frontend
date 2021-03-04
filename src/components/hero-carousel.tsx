@@ -128,7 +128,7 @@ const Carousel: React.FC<CarouselProps> = ({
 }
 
 const defaultProps = {
-  autoPlay: false,
+  autoPlay: true,
   infinite: true,
   className: ''
 }

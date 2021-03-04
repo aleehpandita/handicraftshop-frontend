@@ -12,7 +12,7 @@ const SliderComponent = () => {
         <span className="font-bold">{t('title-register')} </span>
         <span className="font-bold block"> </span>
       </h3>
-      <p className="text-gray-500 mb-40px">
+      <p className="text-gray-900 font-bold  mb-40px">
         {t('description-register')}
       </p>
       <Button variant="elevation">

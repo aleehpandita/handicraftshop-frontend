@@ -2,7 +2,7 @@ import React from 'react'
 import Carousel from 'components/hero-carousel'
 import SliderComponent from './craftsman-component'
 import BannerImageOne from 'assets/image/slider_1.png'
-import BannerImageTwo from 'assets/image/slider_02.jpg'
+import BannerImageTwo from 'assets/image/slider_2.png'
 
 const data = [
   { id: 1, background: BannerImageOne, children: <SliderComponent /> },
