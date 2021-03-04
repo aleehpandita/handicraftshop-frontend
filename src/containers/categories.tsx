@@ -49,11 +49,12 @@ const Categories = React.forwardRef(
           }}
           breakpoints={breakpoints}
         >
-          {data?.map((current) => (
-            <SwiperSlide key={current.id}>
+          {data?.map((current, index) => (
+            <SwiperSlide key={index}>
               <CategoryCard
-                id={current.id}
-                imageUrl={current.image_icon_url}
+                id={index}
+                imageUrl='https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg'
+                // imageUrl={current.image_icon_url}
                 name={current.name}
               />
             </SwiperSlide>

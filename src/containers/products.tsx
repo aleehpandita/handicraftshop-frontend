@@ -5,6 +5,7 @@ import { useCart } from 'contexts/cart/cart.provider'
 import { useSearch } from 'contexts/search/use-search'
 import { useSearchable } from 'helpers/use-searchable'
 import NotFound from 'assets/icons/not-found'
+import { useRouter } from 'next/router'
 
 const Products = React.forwardRef(
   ({ items }: any, ref: React.RefObject<HTMLDivElement>) => {
@@ -17,6 +18,7 @@ const Products = React.forwardRef(
 
     const { addItem, removeItem, getItem } = useCart()
 
+    const router = useRouter()
     const showDetails = (item) => {
       dispatch({
         type: 'STORE_PRODUCT_DETAIL',
@@ -25,19 +27,21 @@ const Products = React.forwardRef(
         }
       })
 
-      dispatch({
-        type: 'SLIDE_CART',
-        payload: {
-          open: true
-        }
-      })
+      router.push('/product-detail')
 
-      dispatch({
-        type: 'TOGGLE_PRODUCT_DETAIL',
-        payload: {
-          showDetails: true
-        }
-      })
+      // dispatch({
+      //   type: 'SLIDE_CART',
+      //   payload: {
+      //     open: true
+      //   }
+      // })
+
+      // dispatch({
+      //   type: 'TOGGLE_PRODUCT_DETAIL',
+      //   payload: {
+      //     showDetails: true
+      //   }
+      // })
     }
 
     return (

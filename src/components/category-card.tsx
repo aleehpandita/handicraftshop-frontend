@@ -1,23 +1,23 @@
-import React, { ReactElement } from 'react';
-import Image from 'next/image';
-import { useCategory } from 'contexts/category/use-category';
+import React, { ReactElement } from 'react'
+import Image from 'next/image'
+import { useCategory } from 'contexts/category/use-category'
 interface Props {
   imageUrl: string;
   name: string;
   id: string;
 }
 
-export default function CategoryCard({
+export default function CategoryCard ({
   imageUrl,
   name,
-  id,
+  id
 }: Props): ReactElement {
-  const { category, setCategory } = useCategory();
-  function handleCategoryClick() {
+  const { category, setCategory } = useCategory()
+  function handleCategoryClick () {
     if (category !== id) {
-      setCategory(id);
+      setCategory(id)
     } else {
-      setCategory('');
+      setCategory('')
     }
   }
   return (
@@ -31,5 +31,5 @@ export default function CategoryCard({
       <Image src={imageUrl} alt={name} width={120} height={120} unoptimized />
       <p className="font-semibold text-gray-900 truncate">{name}</p>
     </div>
-  );
+  )
 }

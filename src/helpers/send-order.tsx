@@ -18,7 +18,9 @@ export async function SendingOrder (body:OrderProps) {
   //     notFound: true
   //   }
   // }
-  const products = {}
+  const products = {
+    status: 200
+  }
 
   return products
 }

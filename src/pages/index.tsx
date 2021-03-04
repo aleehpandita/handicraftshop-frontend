@@ -44,12 +44,14 @@ export default function IndexPage ({ products, categories }) {
 
 export async function getServerSideProps ({ locale }) {
   const products = await getProducts()
-  const categories = await getCategories()
+  const array = await getCategories()
+  const categories = array.data
+  console.log('categories', categories)
   return {
     props: {
       products,
       categories,
-      ...await serverSideTranslations(locale, ['common'])
+      ...await serverSideTranslations(locale, ['common', 'products'])
     }
   }
 }
