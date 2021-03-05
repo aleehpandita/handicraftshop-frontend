@@ -3,9 +3,10 @@ import Head from 'next/head'
 import Layout from 'containers/layout/layout'
 import LoginForm from 'components/Forms/login'
 import LoginTabs from 'components/Tabs/login-tabs'
-import RegisterForm from 'components/Forms/register'
+import MegaMenu from 'components/mega-menu'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import ShoppingCart from 'components/shopping-cart'
 
 export default function Checkout () {
   const { t } = useTranslation('checkout')
@@ -20,6 +21,8 @@ export default function Checkout () {
         <meta name="Description" content="Put your description here." />
         <title> {t('title')}</title>
       </Head>
+      <MegaMenu />
+      <ShoppingCart />
 
  </Layout>
   )

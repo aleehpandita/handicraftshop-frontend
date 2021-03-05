@@ -46,7 +46,6 @@ export async function getServerSideProps ({ locale }) {
   const products = await getProducts()
   const array = await getCategories()
   const categories = array.data
-  console.log('categories', categories)
   return {
     props: {
       products,

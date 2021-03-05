@@ -25,26 +25,26 @@ export default function RegisterCraftsman () {
       <MegaMenu />
       <CraftsmanBanner />
 
-<div className="w-full h-1/2 flex divide-x mt-2">
-<div className=" p-10 items-center w-1/2 hidden md:block xl:block lg:block ">
-      <div className="rounded overflow-hidden shadow-lg my-2 w-full">
-              <Image
-                    className="object-cover w-full"
-                    // src={item.image}
-                    src={PartnerImage}
-                    alt={t('craftsman')}
-                    width={620}
-                    height={318}
-                    />
-                   <div className="py-4">
-                      <div className="font-bold text-xl mb-2">{t('title-info')}</div>
-                        <p className="text-grey-darker text-base text-justify w-full">{t('information')}
-                        </p>
-                   </div>
-            </div>
-         </div>
+<div className="w-full h-1/2 flex lg:divide-x  md:divide-x xl:divide-x   mt-2">
+      <div className=" p-10 items-center w-full lg:w-1/2 md:w-1/2 xl:w-1/2 block-inline md:block xl:block lg:block ">
+            <div className="rounded overflow-hidden shadow-lg my-2">
+                    <Image
+                          className="object-cover w-full"
+                          // src={item.image}
+                          src={PartnerImage}
+                          alt={t('craftsman')}
+                          width={620}
+                          height={318}
+                          />
+                        <div className="py-4">
+                            <div className="font-bold text-xl mb-2">{t('title-info')}</div>
+                              <p className="text-grey-darker text-base text-justify w-full">{t('information')}
+                              </p>
+                        </div>
+                  </div>
+              </div>
 
-              <div className=" px-auto w-1/2 hidden md:block xl:block lg:block ">
+              <div className=" px-auto w-full  lg:w-1/2 md:w-1/2 xl:w-1/2 md:block xl:block lg:block ">
               <RegisterCraftsmanForm />
               </div>
       </div>

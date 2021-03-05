@@ -4,7 +4,7 @@ import Layout from 'containers/layout/layout'
 import LoginForm from 'components/Forms/login'
 import LoginTabs from 'components/Tabs/login-tabs'
 import ProductDetailComponent from 'components/Product/product-detail'
-import RegisterForm from 'components/Forms/register'
+import ReviewForm from 'components/Forms/review'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { CURRENCY } from 'helpers/constants'
@@ -12,20 +12,11 @@ import { useCart } from 'contexts/cart/cart.provider'
 import { DrawerContext } from 'contexts/drawer/drawer.provider'
 import ArrowLeft from 'assets/icons/arrow-left'
 import Counter from 'components/counter'
+import ReviewCard from 'components/review-card'
 
 export default function ProductDetail () {
   const { addItem, getItem, removeItem } = useCart()
   const { state, dispatch } = useContext(DrawerContext)
-
-  const addToCart = () => {
-    addItem(state.item)
-    dispatch({
-      type: 'TOGGLE_CART_VIEW',
-      payload: {
-        showCart: true
-      }
-    })
-  }
 
   const count = getItem(state.item.id)?.quantity
 
@@ -42,6 +33,14 @@ export default function ProductDetail () {
         <title> {t('title', name)}</title>
       </Head>
       <ProductDetailComponent />
+    <div className="container p-3 w-full flex  divide-x  mx-auto">
+              <div className="lg:w-1/2 md:w-1/2 items-center mx-auto xl:w-1/2 block md:block xl:block lg:block ">
+              <ReviewForm />
+              </div>
+            <div className=" p-auto w-1/2 md:block xl:block lg:block ">
+            <ReviewCard item={state.item}/>
+            </div>
+    </div>
  </Layout>
   )
 }
