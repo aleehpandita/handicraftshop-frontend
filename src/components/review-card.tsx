@@ -30,7 +30,7 @@ interface ItemCardProps {
   item: ItemProps;
 }
 
-const ReviewCard: React.FC = (item) => {
+const ReviewCard: React.FC<ItemCardProps> = (item) => {
   const baseClassName = ItemCardBase + 'shadow-cart'
   return (
     <div className="flex items-start p-auto">

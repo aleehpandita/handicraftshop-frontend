@@ -18,7 +18,6 @@ const CARD_OPTIONS = {
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
       fontSize: '18px',
       fontSmoothing: 'antialiased',
-      padding: '10px',
       letterSpacing:'2px',
       ':-webkit-autofill': {
         color: '#fce883',
