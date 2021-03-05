@@ -21,10 +21,10 @@ export const LanguageDropdown: React.FC = () => {
   const container = useRef(null)
   const esp = t('es')
   const ing = t('en')
-
+  const path = router.pathname
   const ChangeLanguage = () => {
     const currentQuery = router.query
-    console.log(currentQuery)
+    console.log(path + '/' + currentQuery)
     // router.push({
     //   pathname: '/product/[pid]',
     //   query: { pid: post.id },
@@ -90,9 +90,9 @@ export const LanguageDropdown: React.FC = () => {
 
         <div className="bg-white rounded shadow-md">
              <ActiveLink
+                href={path}
                 locale='es'
                 activeClassName="font-semibold mt-0 py-2  "
-                onClick={ChangeLanguage}
               >
             <a className="block px-4 py-0 " >
            {esp}
@@ -100,8 +100,8 @@ export const LanguageDropdown: React.FC = () => {
 
           </ActiveLink>
           <ActiveLink
+                href={path}
                 locale='en'
-                onClick={ChangeLanguage}
                 activeClassName="font-semibold mt-0 py-2  "
               >
             <a className="block px-4 py-0" >

@@ -9,12 +9,13 @@ type ProductProps = {
   item:any
 }
 const ProductDetailComponent: React.FC<ProductProps> = ({ item }) => {
-  const { addItem } = useCart()
+  const realItem = item.data
+  const { addItem, removeItem, getItem } = useCart()
   const { dispatch } = useContext(DrawerContext)
   const { t } = useTranslation('products')
 
   const addToCart = () => {
-    addItem(item)
+    addItem(realItem)
     dispatch({
       type: 'TOGGLE_CART_VIEW',
       payload: {
@@ -33,7 +34,8 @@ const ProductDetailComponent: React.FC<ProductProps> = ({ item }) => {
     <section className="text-gray-700 body-font overflow-hidden bg-white">
     <div className="container px-5 mx-auto">
       <div className="lg:w-4/5 mx-auto flex flex-wrap">
-      <Image src="https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg" alt='partner' width={500} height={500} unoptimized />
+      <Image src={realItem.image} alt={realItem.name} width={500} height={500} unoptimized />
+      {/* <img src="https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg'" alt='partner' width={500} height={500} /> */}
 
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">{item.data.supplier.name}</h2>

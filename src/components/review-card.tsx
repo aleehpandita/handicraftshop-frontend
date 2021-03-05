@@ -18,22 +18,23 @@ import {
 import Image from 'next/image'
 
 interface ItemProps {
-  image: string;
-  name: string;
-  price: number;
-  slug: string;
-  stock: number;
-  average_rating:string
+    item: {
+      image: string;
+      name: string;
+      price: number;
+      slug: string;
+      stock: number;
+      average_rating:string,
+      review:string
+    }
 }
 
 interface ItemCardProps {
   item: ItemProps;
 }
 
-const ReviewCard: React.FC<ItemCardProps> = ({
-  item
-}) => {
-  const baseClassName = ItemCardBase + 'shadow-cart'
+const ReviewCard: React.FC<ItemProps> = (item) => {
+  const review = item.item.review
   return (
     <div className="flex items-start p-auto">
     <div className=" md:pl-5 xl:pl-5 lg:pl-5">
@@ -83,7 +84,7 @@ const ReviewCard: React.FC<ItemCardProps> = ({
       </div>
       <div className="mt-3">
         <span className="font-bold">Sapien consequat eleifend!</span>
-        <p className="mt-1 text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p className="mt-1 text-justify">{review}</p>
       </div>
       <div className="flex items-center justify-between mt-4 text-sm text-gray-600 fill-current">
         <button className="flex items-center">
