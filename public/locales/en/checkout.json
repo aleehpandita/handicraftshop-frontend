@@ -16,7 +16,7 @@
   "coupons": "Coupons",
   "es": "Español",
   "en": "English",
-  "cart": "Shopping Cart",
+  "cart": "Confirm Shopping Cart",
   "o-details": "Order Details",
   "coupon-d": "Coupon Code",
   "ins-d": "Instruction for Seller ",
@@ -24,5 +24,6 @@
   "code": "Coupon Code",
   "c-info": "If you have a coupon code, please enter it in the box below",
   "seller-info": "If you have some information for the seller you can leave them in the box below",
-  "address": "Address"
+  "address": "Address",
+  "methods": "Payment Methods"
 }

@@ -16,7 +16,7 @@ const { i18n } = require('./next-i18next.config.js')
 const nextConfig = {
   images: {
     // sizes: [320, 480, 820, 1200, 1600],
-    domains: ['s3.amazonaws.com', 'scontent.cdninstagram.com', 'via.placeholder.com']
+    domains: ['s3.amazonaws.com', 'scontent.cdninstagram.com', 'via.placeholder.com', 'craftystore.s3-us-west-2.amazonaws.com']
   }
 }
 

@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-
-import CustomDonationInput from '../components/CustomDonationInput'
-import StripeTestCards from '../components/StripeTestCards'
 import PrintObject from '../components/PrintObject'
+import { useTranslation } from 'next-i18next'
 
 import { fetchPostJSON } from '../utils/api-helpers'
 import { formatAmountForDisplay } from '../utils/stripe-helpers'
@@ -14,17 +12,19 @@ const CARD_OPTIONS = {
   iconStyle: 'solid' as const,
   style: {
     base: {
-      iconColor: '#6772e5',
-      color: '#6772e5',
+      iconColor: '#00000',
+      color: '#00000',
       fontWeight: '500',
       fontFamily: 'Roboto, Open Sans, Segoe UI, sans-serif',
-      fontSize: '16px',
+      fontSize: '18px',
       fontSmoothing: 'antialiased',
+      padding: '10px',
+      letterSpacing:'2px',
       ':-webkit-autofill': {
         color: '#fce883',
       },
       '::placeholder': {
-        color: '#6772e5',
+        color: '#00000',
       },
     },
     invalid: {
@@ -34,9 +34,11 @@ const CARD_OPTIONS = {
   },
 }
 
-const ElementsForm = () => {
+const ElementsForm = (total) => {
+console.log('total en element',total.total)
+const { t } = useTranslation('checkout')
   const [input, setInput] = useState({
-    customDonation: Math.round(config.MAX_AMOUNT / config.AMOUNT_STEP),
+    customDonation: Math.round((total.total)),
     cardholderName: '',
   })
   const [payment, setPayment] = useState({ status: 'initial' })
@@ -84,7 +86,7 @@ const ElementsForm = () => {
 
     // Create a PaymentIntent with the specified amount.
     const response = await fetchPostJSON('/api/payment_intents', {
-      amount: input.customDonation,
+      amount: total,
     })
     setPayment(response)
 
@@ -121,28 +123,24 @@ const ElementsForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <CustomDonationInput
-          className="elements-style"
-          name="customDonation"
-          value={input.customDonation}
-          min={config.MIN_AMOUNT}
-          max={config.MAX_AMOUNT}
-          step={config.AMOUNT_STEP}
-          currency={config.CURRENCY}
-          onChange={handleInputChange}
-        />
-        <StripeTestCards />
-        <fieldset className="elements-style">
-          <legend>Your payment details:</legend>
+      
+        
+        <fieldset >
+          <div className="p-5">
+           <label>Cardholder Name</label>
           <input
             placeholder="Cardholder name"
-            className="elements-style"
+            className="rounded-sm lg:px-4 md:px-4 xl:px-4  md:py-3 lg:py-3 xl:py-3 md:mt-3 lg:mt-3 py-3  xl:mt-3 focus:outline-none bg-gray-100 w-full"
             type="Text"
             name="cardholderName"
             onChange={handleInputChange}
             required
           />
-          <div className="FormRow elements-style">
+          </div>
+
+          <label> Numero de tarjeta : </label>
+          
+          <div className="p-5">
             <CardElement
               options={CARD_OPTIONS}
               onChange={(e) => {
@@ -154,16 +152,17 @@ const ElementsForm = () => {
             />
           </div>
         </fieldset>
-        <button
-          className="elements-style-background"
-          type="submit"
+        <button type="submit"
           disabled={
             !['initial', 'succeeded', 'error'].includes(payment.status) ||
             !stripe
-          }
-        >
-          Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
-        </button>
+          } 
+          className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                  <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
+                  <span className="ml-2 mt-5px">{t('procceed')}  {formatAmountForDisplay(input.customDonation, config.CURRENCY)}</span>
+                </button>
+
+    
       </form>
       <PaymentStatus status={payment.status} />
       <PrintObject content={payment} />

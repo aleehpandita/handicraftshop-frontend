@@ -97,7 +97,6 @@ const Carousel: React.FC<CarouselProps> = ({
     <MultiCarousel
       arrows={false}
       responsive={responsive}
-      ssr={true}
       showDots={false}
       slidesToSlide={1}
       infinite={infinite}
@@ -115,7 +114,7 @@ const Carousel: React.FC<CarouselProps> = ({
         <div
           className={HeroCarouselBase + ' ' + 'hero-carousel-item-base'}
           style={{
-            backgroundImage: `url(${item.background})`,
+            // backgroundImage: `url(${item.background})`,
             backgroundColor: '#F5FAFB'
           }}
           key={index}

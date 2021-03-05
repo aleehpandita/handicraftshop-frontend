@@ -12,12 +12,11 @@ const Reviews = React.forwardRef(
 
     return (
       <div className="w-full px-4" ref={ref}>
-          <ReviewCard item={state.item}/>
         {items.length ? (
-          <div className="grid gap-4 grid-cols-2 mt-9 md:grid-cols-2 md:col-gap-4 md:row-gap-4 lg:grid-cols-3 xxl:grid-cols-3 xxl:col-gap-4 xxl:row-gap-4 2xxl:grid-cols-4 large:grid-cols-5  ">
-            {/* {searchableItems.map((item) => ( */}
-              <ReviewCard item={state.item}/>
-            {/* ))} */}
+          <div>
+            {items.map((item) => (
+              <ReviewCard key={item.id} item={item}/>
+            ))}
           </div>
         ) : (
           <div className="pt-10px md:pt-40px lg:pt-20px pb-40px">

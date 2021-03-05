@@ -44,9 +44,8 @@ export default function ProductDetail ({ product }) {
     </div>
 
     <div className="container block md:hidden lg:hidden xl:hidden w-full">
-    <Reviews items={reviews} />
-
-    </div>
+          <Reviews items={reviews} />
+      </div>
  </Layout>
   )
 }

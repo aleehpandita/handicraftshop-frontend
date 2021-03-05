@@ -55,9 +55,6 @@ export async function getStaticProps ({ locale }) {
   const products = await getProducts()
   const array = await getCategories()
   const categories = array.data
-
-  // const categories = {}
-  // const products = {}
   return {
     props: {
       products,

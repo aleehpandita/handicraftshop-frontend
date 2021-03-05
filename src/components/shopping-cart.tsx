@@ -14,7 +14,12 @@ const ShoppingCart: React.FC = () => {
   const { state, dispatch } = useContext(DrawerContext)
   const { items, calculatePrice } = useCart()
   const [coupon, setCoupon] = React.useState(0)
-  const tmp_total = calculatePrice
+
+  const [stripeItem, setStripe] = React.useState(false)
+  const [paypalItem, setPaypal] = React.useState(false)
+
+  const [Realtotal, setTotal] = React.useState(0)
+
   const couponRef = React.useRef()
   const [textCoupon, settextCoupon] = React.useState('')
   const updateCoupon = () => {
@@ -28,6 +33,7 @@ const ShoppingCart: React.FC = () => {
     // settextCoupon(couponRef?.current!.value)
     // buscar cupon en bd y sacar descuento ejemplo 10%
     setCoupon(15 / 100)
+    setTotal(calculatePrice() - (calculatePrice() * coupon))
     //   const sub = calculatePrice()
 
   //   const calc = sub * (coupon / 100)
@@ -35,19 +41,30 @@ const ShoppingCart: React.FC = () => {
   }
   const { t } = useTranslation('checkout')
 
+  React.useEffect(() => {
+    setTotal(calculatePrice())
+    console.log(Realtotal)
+  }, [calculatePrice(), Realtotal])
+
   return (
 
 <div className="flex justify-center my-6">
 
   <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
     <div className="flex-1">
-    <h1 className="text-3xl font-semibold text-gray-800 md:text-4xl"> {t('cart')} <span className="text-red-500"> Pandita 420 la mejo</span></h1>
+    <h1 className="text-3xl font-semibold text-gray-800 md:text-4xl"> {t('cart')} </h1><span className="text-red-500 font-bold">Favor de checar que todo sus datos sean los correctos</span>
     <div className="flex  mt-6 -mx-2 lg:flex">
         <div className="lg:px-2 lg:w-1/2 md:w-1/2 xl:w-1/2 w-full">
         <div className="p-2 bg-gray-300 ">
             <h2 className="ml-2 font-bold uppercase">{t('address')}</h2 >
-          </div>
 
+          </div>
+          <p className="mb-4 italic text-xl">
+          <textarea className="w-full h-24 p-2 bg-gray-100 rounded" defaultValue=" Direccion Reg 96 Calle Hotzuc Zona Industrial Lote 3 Mz 85   Sm. 59 Cp 88530
+">
+
+          </textarea>
+            </p>
 <div className="p-2 bg-gray-300">
             <h2 className="ml-2 font-bold uppercase text-sm">{t('ins-d')}</h2>
           </div>
@@ -68,7 +85,31 @@ const ShoppingCart: React.FC = () => {
      </div>
       <div className="  -mx-2 lg:flex">
         <div className="lg:px-2 lg:w-1/2">
+        <div className="p-2 bg-gray-300">
+            <h2 className="ml-2 font-bold uppercase">{t('methods')}</h2>
+          </div>
 
+          <div className="mt-4">
+                <span className="text-gray-700"> Choose your method:  </span>
+                <div className="mt-2">
+                <label className="inline-flex items-center mt-3">
+                    <input type="radio" className="form-radio h-5 w-5 text-gray-600" /><span className="ml-2 text-gray-700">Credit Card</span>
+                </label>
+
+                <label className="inline-flex items-center mt-3">
+                    <input type="radio" className="form-radio h-5 w-5 text-gray-600" /><span className="ml-2 text-gray-700">Paypal</span>
+                </label>
+
+                <label className="inline-flex items-center mt-3">
+                    <input type="radio" className="form-radio h-5 w-5 text-gray-600" /><span className="ml-2 text-gray-700">label</span>
+                </label>
+              </div>
+              </div>
+              <div id="stripe_method">
+              <Elements stripe={getStripe()}>
+                  <ElementsForm total={Realtotal}/>
+                </Elements>
+              </div>
         </div>
 
         <div className="lg:px-2 lg:w-1/2">
@@ -138,12 +179,7 @@ const ShoppingCart: React.FC = () => {
                       </span>
                   </div>
                 </div>
-              <a href="#">
-                <button className="flex justify-center w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-gray-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
-                  <svg aria-hidden="true" data-prefix="far" data-icon="credit-card" className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48.1 48h479.8c26.6 0 48.1-21.5 48.1-48V80c0-26.5-21.5-48-48.1-48zM54.1 80h467.8c3.3 0 6 2.7 6 6v42H48.1V86c0-3.3 2.7-6 6-6zm467.8 352H54.1c-3.3 0-6-2.7-6-6V256h479.8v170c0 3.3-2.7 6-6 6zM192 332v40c0 6.6-5.4 12-12 12h-72c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h72c6.6 0 12 5.4 12 12zm192 0v40c0 6.6-5.4 12-12 12H236c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0 12 5.4 12 12z"/></svg>
-                  <span className="ml-2 mt-5px">{t('procceed')}</span>
-                </button>
-              </a>
+
           </div>
         </div>
       </div>
