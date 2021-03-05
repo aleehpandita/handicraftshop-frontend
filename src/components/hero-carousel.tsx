@@ -112,10 +112,10 @@ const Carousel: React.FC<CarouselProps> = ({
     >
       {data.map((item, index) => (
         <div
-          className={HeroCarouselBase + ' ' + 'hero-carousel-item-base'}
+          className={HeroCarouselBase + ' ' + 'hero-carousel-item-base lazy'}
           style={{
-            // backgroundImage: `url(${item.background})`,
-            backgroundColor: '#F5FAFB'
+            backgroundImage: `url(${item.background})`
+            // /backgroundColor: '#F5FAFB'
           }}
           key={index}
         >

@@ -18,7 +18,7 @@ const ShoppingCart: React.FC = () => {
   const [stripeItem, setStripe] = React.useState(false)
   const [paypalItem, setPaypal] = React.useState(false)
 
-  const [Realtotal, setTotal] = React.useState(0)
+  const [Realtotal, setTotal] = React.useState(calculatePrice())
 
   const couponRef = React.useRef()
   const [textCoupon, settextCoupon] = React.useState('')
@@ -40,11 +40,6 @@ const ShoppingCart: React.FC = () => {
   //   setRealtotal(calc)
   }
   const { t } = useTranslation('checkout')
-
-  React.useEffect(() => {
-    setTotal(calculatePrice())
-    console.log(Realtotal)
-  }, [calculatePrice(), Realtotal])
 
   return (
 
@@ -107,7 +102,7 @@ const ShoppingCart: React.FC = () => {
               </div>
               <div id="stripe_method">
               <Elements stripe={getStripe()}>
-                  <ElementsForm total={Realtotal}/>
+                  <ElementsForm total={ (calculatePrice() - (calculatePrice() * coupon))}/>
                 </Elements>
               </div>
         </div>

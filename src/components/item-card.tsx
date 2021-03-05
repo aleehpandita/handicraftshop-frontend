@@ -49,12 +49,12 @@ const ItemCard: React.FC<ItemCardProps> = ({
         <div className={ItemCardImage}>
           <Image
             className="object-cover"
-            // src={item.image}
-            src='/use-shopping-cart.png'
+            src={item.image}
+            // src='/use-shopping-cart.png'
             alt={' Alt ' + item.name}
             width={138}
             height={138}
-            // unoptimized
+            unoptimized
             />
         </div>
 

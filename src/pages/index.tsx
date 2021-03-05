@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../containers/layout/layout'
 import PromotionBanner from 'containers/banner/promotion-banner'
-import Filters from 'components/Forms/filters'
 import HowItWorks from 'containers/how-it-works'
 import MegaMenu from '../components/mega-menu'
 import { useTranslation } from 'next-i18next'
@@ -44,7 +43,6 @@ export default function IndexPage ({ products, categories }) {
       <PromotionBanner />
       <HowItWorks />
       <Categories data={categories} ref={elRef} />
-      {/* <Filters /> */}
       <Products items={products} ref={elRef} />
     </Layout>
   )
