@@ -53,8 +53,8 @@ const Categories = React.forwardRef(
             <SwiperSlide key={index}>
               <CategoryCard
                 id={index}
-                imageUrl='https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg'
-                // imageUrl={current.image_icon_url}
+                 imageUrl='https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg'
+                // imageUrl={current.image}
                 name={current.name}
               />
             </SwiperSlide>

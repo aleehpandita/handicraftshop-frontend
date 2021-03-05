@@ -14,5 +14,9 @@
   "notifications": "Notifications",
   "coupons": "Coupons",
   "es": "Español",
-  "en": "English"
+  "en": "English",
+  "cart": "Carrito de Compras",
+  "o-details": "Detalles de la orden",
+  "coupon-d": "Código de descuento ",
+  "ins-d": "Instrucciones al vendedor "
 }
