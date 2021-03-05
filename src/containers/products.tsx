@@ -6,19 +6,24 @@ import { useSearch } from 'contexts/search/use-search'
 import { useSearchable } from 'helpers/use-searchable'
 import NotFound from 'assets/icons/not-found'
 import { useRouter } from 'next/router'
+import { useCategory } from 'contexts/category/use-category'
 
 const Products = React.forwardRef(
   ({ items }: any, ref: React.RefObject<HTMLDivElement>) => {
     const { dispatch } = useContext(DrawerContext)
 
     const { searchTerm } = useSearch()
-    const searchableItems = useSearchable(items, searchTerm, (item) => [
-      item.name
-    ])
+    const { category } = useCategory()
+    const searchableItems = useSearchable(
+      items,
+      category,
+      searchTerm,
+      (item) => [item.name]
+    )
 
     const { addItem, removeItem, getItem } = useCart()
-
     const router = useRouter()
+
     const showDetails = (item) => {
       dispatch({
         type: 'STORE_PRODUCT_DETAIL',
@@ -26,22 +31,7 @@ const Products = React.forwardRef(
           item: item
         }
       })
-
-      router.push('/product-detail')
-
-      // dispatch({
-      //   type: 'SLIDE_CART',
-      //   payload: {
-      //     open: true
-      //   }
-      // })
-
-      // dispatch({
-      //   type: 'TOGGLE_PRODUCT_DETAIL',
-      //   payload: {
-      //     showDetails: true
-      //   }
-      // })
+      router.push('/product/' + item.id)
     }
 
     return (

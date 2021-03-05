@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -12,7 +13,10 @@ import { getProducts } from 'helpers/get-products'
 import { useRefScroll } from 'helpers/use-ref-scroll'
 import Products from 'containers/products'
 import { getCategories } from 'helpers/get-categories'
+import { useSearch } from 'contexts/search/use-search'
 import Categories from 'containers/categories'
+import { useCategory } from 'contexts/category/use-category'
+import { useRouter } from 'next/router'
 
 export default function IndexPage ({ products, categories }) {
   const { elRef, scroll } = useRefScroll({
@@ -20,9 +24,12 @@ export default function IndexPage ({ products, categories }) {
     percentOfContainer: 0,
     offsetPX: -100
   })
-
+  const { searchTerm } = useSearch()
+  const { category } = useCategory()
+  useEffect(() => {
+    if (searchTerm || category) return scroll()
+  }, [searchTerm, category])
   const { t } = useTranslation('common')
-  // const { t } = useTranslation('mega-menu');
   return (
     <Layout>
        <Head>
@@ -37,15 +44,20 @@ export default function IndexPage ({ products, categories }) {
       <PromotionBanner />
       <HowItWorks />
       <Categories data={categories} ref={elRef} />
+      {/* <Filters /> */}
       <Products items={products} ref={elRef} />
     </Layout>
   )
 }
 
-export async function getServerSideProps ({ locale }) {
+// export async function getStaticProps ({ locale }) {
+export async function getStaticProps ({ locale }) {
   const products = await getProducts()
   const array = await getCategories()
   const categories = array.data
+
+  // const categories = {}
+  // const products = {}
   return {
     props: {
       products,

@@ -91,7 +91,6 @@ export default function Checkout () {
       handleClose()
       hideCheckout()
       setSuccess(true)
-      clearCart()
       setLoading(false)
       router.push('/checkout')
     } else {

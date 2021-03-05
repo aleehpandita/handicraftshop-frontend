@@ -3,34 +3,11 @@ import React, { useState, useRef, useEffect, useContext } from 'react'
 import { Transition } from '@tailwindui/react'
 import { useTranslation } from 'next-i18next'
 import ActiveLink from 'components/active-link'
-import { DrawerContext } from 'contexts/drawer/drawer.provider'
-import UserIcon from 'assets/icons/user'
-import { useRouter } from 'next/router'
 
-type UserProps = {
-
-    login?: {
-        id: number,
-        username:string
-    };
-  };
-
-export const CraftsmanDropdown: React.FC<UserProps | null> = ({
-  login
-}) => {
+export const CraftsmanDropdown: React.FC = () => {
   const { t } = useTranslation('common')
-  const router = useRouter()
-  const favorites = t('favorites')
-  const register = t('register')
-  const myorders = t('orders')
-  const mynotifications = t('notifications')
-  const mycoupons = t('coupons')
-  const languageActive = router.locale
-  const path = router.pathname
   const [show, setShow] = useState(false)
   const container = useRef(null)
-  const esp = t('es')
-  const ing = t('en')
 
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {

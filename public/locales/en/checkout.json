@@ -19,5 +19,10 @@
   "cart": "Shopping Cart",
   "o-details": "Order Details",
   "coupon-d": "Coupon Code",
-  "ins-d": "Instruction for Seller "
+  "ins-d": "Instruction for Seller ",
+  "procceed": "Procceed to checkout",
+  "code": "Coupon Code",
+  "c-info": "If you have a coupon code, please enter it in the box below",
+  "seller-info": "If you have some information for the seller you can leave them in the box below",
+  "address": "Address"
 }

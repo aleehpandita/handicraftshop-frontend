@@ -1,8 +1,7 @@
 import React, { useState, useContext } from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout from 'containers/layout/layout'
-import LoginForm from 'components/Forms/login'
-import LoginTabs from 'components/Tabs/login-tabs'
 import ProductDetailComponent from 'components/Product/product-detail'
 import ReviewForm from 'components/Forms/review'
 import { useTranslation } from 'next-i18next'
@@ -13,15 +12,13 @@ import { DrawerContext } from 'contexts/drawer/drawer.provider'
 import ArrowLeft from 'assets/icons/arrow-left'
 import Counter from 'components/counter'
 import ReviewCard from 'components/review-card'
+import Reviews from 'containers/reviews'
+import { getProduct } from 'helpers/get-product'
 
-export default function ProductDetail () {
-  const { addItem, getItem, removeItem } = useCart()
-  const { state, dispatch } = useContext(DrawerContext)
-
-  const count = getItem(state.item.id)?.quantity
-
+export default function ProductDetail ({ product }) {
+  const reviews = product.data.reviews
+  // console.log('reviews', product.data.reviews)
   const { t } = useTranslation('products')
-  const name = state.item.name
   return (
     <Layout>
       <Head>
@@ -30,23 +27,38 @@ export default function ProductDetail () {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta name="Description" content="Put your description here." />
-        <title> {t('title', name)}</title>
+        <title> {t('title')}</title>
       </Head>
-      <ProductDetailComponent />
-    <div className="container p-3 w-full flex  divide-x  mx-auto">
-              <div className="lg:w-1/2 md:w-1/2 items-center mx-auto xl:w-1/2 block md:block xl:block lg:block ">
+      <ProductDetailComponent item={product} />
+      <div className="w-full h-1/2 flex divide-x">
+
+<div className=" px-auto  w-1/2 hidden md:block xl:block lg:block ">
               <ReviewForm />
               </div>
-            <div className=" p-auto w-1/2 md:block xl:block lg:block ">
-            <ReviewCard item={state.item}/>
+              <div className=" px-auto  w-1/2 hidden md:block xl:block lg:block ">
+              <Reviews items={reviews} />
             </div>
+    </div>
+    <div className="container block md:hidden lg:hidden xl:hidden w-full m-auto px-4">
+      <ReviewForm />
+    </div>
+
+    <div className="container block md:hidden lg:hidden xl:hidden w-full">
+    <Reviews items={reviews} />
+
     </div>
  </Layout>
   )
 }
-export async function getServerSideProps ({ locale }) {
+export async function getServerSideProps ({ locale, query }) {
+  const product = await getProduct(query.id)
+  if (!product) {
+    return null
+  }
+
   return {
     props: {
+      product,
       ...await serverSideTranslations(locale, ['products', 'common'])
     }
   }

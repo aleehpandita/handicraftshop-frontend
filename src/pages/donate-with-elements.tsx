@@ -1,5 +1,4 @@
 import { NextPage } from 'next'
-
 import { Elements } from '@stripe/react-stripe-js'
 import getStripe from '../utils/get-stripejs'
 

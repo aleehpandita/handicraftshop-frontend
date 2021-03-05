@@ -36,7 +36,7 @@ const ReviewCard: React.FC<ItemCardProps> = ({
   const baseClassName = ItemCardBase + 'shadow-cart'
   return (
     <div className="flex items-start p-auto">
-    <div className="flex-shrink-0 pl-5">
+    <div className=" md:pl-5 xl:pl-5 lg:pl-5">
       <div className="inline-block relative">
         <div className="relative w-16 h-16 rounded-full overflow-hidden">
           <img className="absolute top-0 left-0 w-full h-full bg-cover object-fit object-cover" src="https://picsum.photos/id/646/200/200" alt="Profile picture" />

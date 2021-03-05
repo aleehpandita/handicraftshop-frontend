@@ -9,8 +9,8 @@ const ReviewForm: React.FC = () => {
   const { t } = useTranslation('login')
   return (
 
-<div className="mx-auto bg-white shadow-lg rounded-lg  max-w-sm ">
-   <div className="mb-1 tracking-wide py-4" >
+<div className="mx-auto bg-white shadow-lg rounded-lg  max-w-sm w-full">
+   <div className="mb-1 tracking-wide py-4 w-full" >
       <h2 className="text-gray-800 font-semibold mt-1">67 Users reviews</h2>
       <div className="border-b -mx-8 px-8 pb-3">
          <div className="flex items-center mt-1">

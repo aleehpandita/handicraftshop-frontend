@@ -9,7 +9,8 @@ export default class extends Document {
   render () {
     return (
       <Html lang="en-US">
-      <link rel="icon" type="image/png" href="mexican-woman.png"></link>
+      {/* <link rel="icon" type="image/png" href="mexican-woman.png"></link>
+       */}
       <Head />
         <body>
           <Main />

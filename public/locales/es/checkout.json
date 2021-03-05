@@ -18,5 +18,10 @@
   "cart": "Carrito de Compras",
   "o-details": "Detalles de la orden",
   "coupon-d": "Código de descuento ",
-  "ins-d": "Instrucciones al vendedor "
+  "ins-d": "Instrucciones al vendedor ",
+  "procceed": "Realizar pago",
+  "code": "Código del cupón",
+  "c-info": "Si cuenta con un cupón, favor de  introducir el código",
+  "seller-info": "Si necesita decir alguna información extra al vendedor, puede escribirla a continuación",
+  "address": "Dirección"
 }

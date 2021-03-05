@@ -8,17 +8,7 @@ import { useRouter } from 'next/router'
 import EsFlag from 'assets/icons/es-flag'
 import EnFlag from 'assets/icons/en-flag'
 
-type UserProps = {
-
-    login?: {
-        id: number,
-        username:string
-    };
-  };
-
-export const LanguageDropdown: React.FC<UserProps | null> = ({
-  login
-}) => {
+export const LanguageDropdown: React.FC = () => {
   const { t } = useTranslation('common')
   const router = useRouter()
   const favorites = t('favorites')
@@ -27,12 +17,19 @@ export const LanguageDropdown: React.FC<UserProps | null> = ({
   const mynotifications = t('notifications')
   const mycoupons = t('coupons')
   const languageActive = router.locale
-  const path = router.pathname
   const [show, setShow] = useState(false)
   const container = useRef(null)
   const esp = t('es')
   const ing = t('en')
 
+  const ChangeLanguage = () => {
+    const currentQuery = router.query
+    console.log(currentQuery)
+    // router.push({
+    //   pathname: '/product/[pid]',
+    //   query: { pid: post.id },
+    // })
+  }
   useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       if (!container.current.contains(event.target)) {
@@ -93,9 +90,9 @@ export const LanguageDropdown: React.FC<UserProps | null> = ({
 
         <div className="bg-white rounded shadow-md">
              <ActiveLink
-                href={path}
                 locale='es'
                 activeClassName="font-semibold mt-0 py-2  "
+                onClick={ChangeLanguage}
               >
             <a className="block px-4 py-0 " >
            {esp}
@@ -103,8 +100,8 @@ export const LanguageDropdown: React.FC<UserProps | null> = ({
 
           </ActiveLink>
           <ActiveLink
-                href={path}
                 locale='en'
+                onClick={ChangeLanguage}
                 activeClassName="font-semibold mt-0 py-2  "
               >
             <a className="block px-4 py-0" >
