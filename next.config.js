@@ -16,8 +16,10 @@ const { i18n } = require('./next-i18next.config.js')
 const nextConfig = {
   images: {
     // sizes: [320, 480, 820, 1200, 1600],
-    domains: ['s3.amazonaws.com', 'scontent.cdninstagram.com']
+    domains: ['s3.amazonaws.com', 'scontent.cdninstagram.com', 'via.placeholder.com']
   }
 }
 
-module.exports = withPlugins([withOptimizedImages], { i18n }, nextConfig)
+module.exports = withPlugins([withOptimizedImages],
+  { i18n }
+  , nextConfig)

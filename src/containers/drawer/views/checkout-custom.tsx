@@ -42,6 +42,13 @@ export default function Checkout () {
       }
     })
   }
+  const handleClose = () =>
+    dispatch({
+      type: 'SLIDE_CART',
+      payload: {
+        open: false
+      }
+    })
 
   const submitOrder = async () => {
     const { name, email, address, postal_code, suite, phone_number } = formData
@@ -80,10 +87,11 @@ export default function Checkout () {
     const res = await SendingOrder(body)
 
     if (res.status === 200) {
-      setSuccess(true)
-      clearCart()
-      setLoading(false)
+      setLoading(true)
+      handleClose()
       hideCheckout()
+      setSuccess(true)
+      setLoading(false)
       router.push('/checkout')
     } else {
       // router.push('/checkout')

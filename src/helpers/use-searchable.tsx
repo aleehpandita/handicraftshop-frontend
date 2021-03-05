@@ -1,9 +1,14 @@
 import { useMemo } from 'react'
-export const useSearchable = (data, searchText, searchProps) => {
-  // console.log('data en searchable', data)
+export const useSearchable = (data, category, searchText, searchProps) => {
   return useMemo(() => {
     const regex = new RegExp(searchText, 'i')
-    return data.data.filter((item) =>
+    let _data = data.data
+    if (category) {
+      _data = _data.filter((item) =>
+        item.category_ids.split(',')?.includes(category)
+      )
+    }
+    return _data.filter((item) =>
       searchProps(item).some((sp) => regex.test(sp))
     )
   }, [data, searchText, searchProps])

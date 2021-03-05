@@ -3,6 +3,8 @@ import 'rc-collapse/assets/index.css'
 import 'overlayscrollbars/css/OverlayScrollbars.css'
 import 'react-multi-carousel/lib/styles.css'
 import 'assets/styles/index.css'
+
+// import 'assets/styles/stripe.css'
 import { CartProvider } from 'contexts/cart/cart.provider'
 import { DrawerProvider } from 'contexts/drawer/drawer.provider'
 import { StickyProvider } from 'contexts/sticky/sticky.provider'
@@ -14,10 +16,11 @@ import { appWithTranslation } from 'next-i18next'
 
 const CustomApp = ({ Component, pageProps }) =>
   (
-    <SearchProvider>
-      <StickyProvider>
 
-      <CategoryProvider>
+    <StickyProvider>
+    <SearchProvider>
+    <CategoryProvider>
+
         <DrawerProvider>
           <CartProvider>
             <Component {...pageProps} />
@@ -25,7 +28,14 @@ const CustomApp = ({ Component, pageProps }) =>
           </CartProvider>
         </DrawerProvider>
         </CategoryProvider>
-      </StickyProvider>
     </SearchProvider>
+
+    </StickyProvider>
   )
 export default appWithTranslation(CustomApp)
+
+// export default appWithTranslation(CustomApp, {
+//   defaultLanguage: 'en',
+//   otherLanguages: ['es', 'en'],
+//   localePath: path.resolve('./public/static/locales')
+// })

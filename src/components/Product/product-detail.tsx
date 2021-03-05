@@ -3,20 +3,41 @@ import React, { useState, useContext } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useCart } from 'contexts/cart/cart.provider'
 import { DrawerContext } from 'contexts/drawer/drawer.provider'
+import Image from 'next/image'
 
-const ProductDetailComponent: React.FC = () => {
-  const { addItem, getItem, removeItem } = useCart()
-  const { state, dispatch } = useContext(DrawerContext)
-
+type ProductProps = {
+  item:any
+}
+const ProductDetailComponent: React.FC<ProductProps> = ({ item }) => {
+  const { addItem } = useCart()
+  const { dispatch } = useContext(DrawerContext)
   const { t } = useTranslation('products')
+
+  const addToCart = () => {
+    addItem(item)
+    dispatch({
+      type: 'TOGGLE_CART_VIEW',
+      payload: {
+        showCart: true
+      }
+    })
+    dispatch({
+      type: 'SLIDE_CART',
+      payload: {
+        open: true
+      }
+    })
+  }
+
   return (
     <section className="text-gray-700 body-font overflow-hidden bg-white">
-    <div className="container px-5 py-24 mx-auto">
+    <div className="container px-5 mx-auto">
       <div className="lg:w-4/5 mx-auto flex flex-wrap">
-        <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg" />
+      <Image src="https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg" alt='partner' width={500} height={500} unoptimized />
+
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-          <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">{state.item.supplier.name}</h2>
-          <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{state.item.name}</h1>
+          <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">{item.data.supplier.name}</h2>
+          <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.data.name}</h1>
           <div className="flex mb-4">
             <span className="flex items-center">
               <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
@@ -80,8 +101,8 @@ const ProductDetailComponent: React.FC = () => {
             </div>
           </div>
           <div className="flex">
-            <span className="title-font font-medium text-2xl text-gray-900">$ {state.item.price } </span>
-            <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"> { t('button') }</button>
+            <span className="title-font font-medium text-2xl text-gray-900">$ {item.data.price } </span>
+            <button className="flex ml-auto text-white bg-gray-900 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded" onClick={addToCart}> { t('button') }</button>
             <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
               <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
@@ -92,6 +113,8 @@ const ProductDetailComponent: React.FC = () => {
       </div>
     </div>
   </section>
+
   )
 }
+
 export default ProductDetailComponent

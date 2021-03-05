@@ -1,14 +1,13 @@
 import * as config from '../config'
 
 export async function getCategories () {
-  // console.log(config.API_URL + config.API_VERSION)
   const res = await fetch(config.API_URL + config.API_VERSION + '/categories')
-  const products = await res.json()
-  if (!products) {
+  const categories = await res.json()
+  if (!categories) {
     return {
       notFound: true
     }
   }
 
-  return products
+  return categories
 }
