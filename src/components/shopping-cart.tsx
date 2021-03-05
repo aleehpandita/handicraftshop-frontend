@@ -2,70 +2,28 @@ import React, { useContext } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useCart } from 'contexts/cart/cart.provider'
 import { DrawerContext } from 'contexts/drawer/drawer.provider'
+import CartItem from 'components/cart-item'
+import { CURRENCY } from 'helpers/constants'
+import CurrencyFormat from 'react-currency-format'
 
 const ShoppingCart: React.FC = () => {
-  const { dispatch } = useContext(DrawerContext)
+  const { state, dispatch } = useContext(DrawerContext)
   const { items, calculatePrice } = useCart()
   const { t } = useTranslation('checkout')
+
   return (
+
 <div className="flex justify-center my-6">
+
   <div className="flex flex-col w-full p-8 text-gray-800 bg-white shadow-lg pin-r pin-y md:w-4/5 lg:w-4/5">
     <div className="flex-1">
-      <table className="w-full text-sm lg:text-base" >
-        <thead>
-          <tr className="h-12 uppercase">
-            <th className="hidden md:table-cell"></th>
-            <th className="text-left">{t('product')}</th>
-            <th className="lg:text-right text-left pl-5 lg:pl-0">
-              <span className="lg:hidden" title="Quantity">Qtd</span>
-              <span className="hidden lg:inline">Quantity</span>
-            </th>
-            <th className="hidden text-right md:table-cell">Unit price</th>
-            <th className="text-right">Total price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="hidden pb-4 md:table-cell">
-              <a href="#">
-                <img src="https://limg.app/i/Calm-Cormorant-Catholic-Pinball-Blaster-yM4oub.jpeg" className="w-20 rounded" alt="Thumbnail" />
-              </a>
-            </td>
-            <td>
-              <a href="#">
-                <p className="mb-2 md:ml-4">Earphone</p>
-                <form action="" method="POST">
-                  <button type="submit" className="text-gray-700 md:ml-4">
-                    <small>(Remove item)</small>
-                  </button>
-                </form>
-              </a>
-            </td>
-            <td className="justify-center md:justify-end md:flex mt-6">
-              <div className="w-20 h-10">
-                <div className="relative flex flex-row w-full h-8">
-                <input type="number" value="2"
-                  className="w-full font-semibold text-center text-gray-700 bg-gray-200 outline-none focus:outline-none hover:text-black focus:text-black" />
-                </div>
-              </div>
-            </td>
-            <td className="hidden text-right md:table-cell">
-              <span className="text-sm lg:text-base font-medium">
-                10.00€
-              </span>
-            </td>
-            <td className="text-right">
-              <span className="text-sm lg:text-base font-medium">
-                20.00€
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <hr className="pb-6 mt-6" />
+    <h2 className="text-3xl font-semibold text-gray-800 md:text-4xl"> {t('cart')} <span className="text-red-500">Idea</span></h2>
+    {items.map((item) => (
+              <CartItem item={item} key={item.id} />
+    ))}
       <div className="my-4 mt-6 -mx-2 lg:flex">
         <div className="lg:px-2 lg:w-1/2">
-          <div className="p-4 bg-gray-100 rounded-full">
+          <div className="p-2 bg-gray-300 ">
             <h1 className="ml-2 font-bold uppercase">Coupon Code</h1>
           </div>
           <div className="p-4">
@@ -73,7 +31,7 @@ const ShoppingCart: React.FC = () => {
             <div className="justify-center md:flex">
               <form action="" method="POST">
                   <div className="flex items-center w-full h-13 pl-3 bg-white bg-gray-100 border rounded-full">
-                    <input type="coupon" name="code" id="coupon" placeholder="Apply coupon" value="90off"
+                    <input type="coupon" name="code" id="coupon" placeholder="Apply coupon"
                             className="w-full bg-gray-100 outline-none appearance-none focus:outline-none active:outline-none"/>
                       <button type="submit" className="text-sm flex items-center px-3 py-1 text-white bg-gray-800 rounded-full outline-none md:px-4 hover:bg-gray-700 focus:outline-none active:outline-none">
                         <svg aria-hidden="true" data-prefix="fas" data-icon="gift" className="w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 448c0 17.7 14.3 32 32 32h160V320H32v128zm256 32h160c17.7 0 32-14.3 32-32V320H288v160zm192-320h-42.1c6.2-12.1 10.1-25.5 10.1-40 0-48.5-39.5-88-88-88-41.6 0-68.5 21.3-103 68.3-34.5-47-61.4-68.3-103-68.3-48.5 0-88 39.5-88 88 0 14.5 3.8 27.9 10.1 40H32c-17.7 0-32 14.3-32 32v80c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16v-80c0-17.7-14.3-32-32-32zm-326.1 0c-22.1 0-40-17.9-40-40s17.9-40 40-40c19.9 0 34.6 3.3 86.1 80h-86.1zm206.1 0h-86.1c51.4-76.5 65.7-80 86.1-80 22.1 0 40 17.9 40 40s-17.9 40-40 40z"/></svg>
@@ -83,7 +41,7 @@ const ShoppingCart: React.FC = () => {
               </form>
             </div>
           </div>
-          <div className="p-4 mt-6 bg-gray-100 rounded-full">
+          <div className="p-2 mt-6 bg-gray-300">
             <h1 className="ml-2 font-bold uppercase">Instruction for seller</h1>
           </div>
           <div className="p-4">
@@ -92,8 +50,8 @@ const ShoppingCart: React.FC = () => {
           </div>
         </div>
         <div className="lg:px-2 lg:w-1/2">
-          <div className="p-4 bg-gray-100 rounded-full">
-            <h1 className="ml-2 font-bold uppercase">Order Details</h1>
+          <div className="p-2 bg-gray-300">
+            <h1 className="ml-2 font-bold uppercase">{t('o-details')}</h1>
           </div>
           <div className="p-4">
             <p className="mb-6 italic">Shipping and additionnal costs are calculated based on values you have entered</p>
@@ -102,7 +60,16 @@ const ShoppingCart: React.FC = () => {
                   Subtotal
                 </div>
                 <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                  148,827.53€
+                <span className="font-semibold text-18px text-gray-900">
+                        {/* {CURRENCY}
+                        {calculatePrice()} */}
+                        <CurrencyFormat
+                          value={calculatePrice()}
+                          displayType={'text'}
+                          thousandSeparator={true}
+                          prefix={CURRENCY}
+                        />
+                      </span>
                 </div>
               </div>
                 <div className="flex justify-between pt-4 border-b">
@@ -120,26 +87,19 @@ const ShoppingCart: React.FC = () => {
                 </div>
                 <div className="flex justify-between pt-4 border-b">
                   <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                    New Subtotal
-                  </div>
-                  <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                    14,882.75€
-                  </div>
-                </div>
-                <div className="flex justify-between pt-4 border-b">
-                  <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
-                    Tax
-                  </div>
-                  <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                    2,976.55€
-                  </div>
-                </div>
-                <div className="flex justify-between pt-4 border-b">
-                  <div className="lg:px-4 lg:py-2 m-2 text-lg lg:text-xl font-bold text-center text-gray-800">
                     Total
                   </div>
                   <div className="lg:px-4 lg:py-2 m-2 lg:text-lg font-bold text-center text-gray-900">
-                    17,859.3€
+                  <span className="font-semibold text-18px text-gray-900">
+                        {/* {CURRENCY}
+                        {calculatePrice()} */}
+                        <CurrencyFormat
+                          value={calculatePrice()}
+                          displayType={'text'}
+                          thousandSeparator={true}
+                          prefix={CURRENCY}
+                        />
+                      </span>
                   </div>
                 </div>
               <a href="#">
@@ -156,3 +116,4 @@ const ShoppingCart: React.FC = () => {
 </div>
   )
 }
+export default ShoppingCart
