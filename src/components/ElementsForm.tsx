@@ -85,7 +85,7 @@ const { t } = useTranslation('checkout')
 
     // Create a PaymentIntent with the specified amount.
     const response = await fetchPostJSON('/api/payment_intents', {
-      amount: total,
+      amount: total.total,
     })
     setPayment(response)
 
@@ -164,7 +164,6 @@ const { t } = useTranslation('checkout')
     
       </form>
       <PaymentStatus status={payment.status} />
-      <PrintObject content={payment} />
     </>
   )
 }
