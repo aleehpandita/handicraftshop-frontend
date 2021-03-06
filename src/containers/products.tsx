@@ -31,7 +31,11 @@ const Products = React.forwardRef(
           item: item
         }
       })
-      router.push('/product/' + item.id)
+
+      router.push({
+        pathname: router.locale + '/product/[id]',
+        query: { id: item.id }
+      })
     }
 
     return (

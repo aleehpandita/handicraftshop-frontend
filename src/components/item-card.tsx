@@ -75,12 +75,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
           </div>
 
           <button className={ItemCardDetailsButton}
-           onClick={() => {
-             router.push({
-               pathname: router.locale + '/product/[id]',
-               query: { id: item.id }
-             })
-           }}
+           onClick={onClick}
           >
             Details
           </button>
