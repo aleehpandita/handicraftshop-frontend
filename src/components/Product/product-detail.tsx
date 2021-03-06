@@ -35,8 +35,6 @@ const ProductDetailComponent: React.FC<ProductProps> = ({ item }) => {
     <div className="container px-5 mx-auto">
       <div className="lg:w-4/5 mx-auto flex flex-wrap">
       <Image src={realItem.image} alt={realItem.name} width={500} height={500} unoptimized />
-      {/* <img src="https://craftystore.s3-us-west-2.amazonaws.com/terno.jpg'" alt='partner' width={500} height={500} /> */}
-
         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 className="text-sm title-font text-gray-500 tracking-widest uppercase">{item.data.supplier.name}</h2>
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{item.data.name}</h1>

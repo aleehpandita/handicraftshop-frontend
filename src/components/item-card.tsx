@@ -1,6 +1,7 @@
 import React from 'react'
 import { CURRENCY } from 'helpers/constants'
 import CounterAlt from './animated-counter'
+import { useRouter } from 'next/router'
 import {
   ItemCardBase,
   ItemCardBaseContent,
@@ -18,6 +19,7 @@ import {
 import Image from 'next/image'
 
 interface ItemProps {
+  id:number,
   image: string;
   name: string;
   price: number;
@@ -43,6 +45,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
   value
 }) => {
   const baseClassName = ItemCardBase + ' ' + (value ? 'shadow-cart' : 'shadow-cart')
+  const router = useRouter()
   return (
     <div className={baseClassName}>
       <div className={ItemCardBaseContent}>
@@ -71,7 +74,14 @@ const ItemCard: React.FC<ItemCardProps> = ({
             <span className={ItemCardQuantity}>{item.stock} Pieces</span>
           </div>
 
-          <button className={ItemCardDetailsButton} onClick={onClick}>
+          <button className={ItemCardDetailsButton}
+           onClick={() => {
+             router.push({
+               pathname: router.locale + '/product/[id]',
+               query: { id: item.id }
+             })
+           }}
+          >
             Details
           </button>
 
